@@ -21,7 +21,7 @@ services:
       - ./my_conf:/etc/mysql/conf.d
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: todo_list
+      MYSQL_DATABASE: todo_list2nd
 
   nginx:
     image: nginx:stable-alpine
@@ -34,3 +34,11 @@ services:
     depends_on:
       - php
       - mysql
+
+  redis:
+    image: "redis:latest"
+    container_name: redis
+    ports:
+      - "6379:6379" 
+    volumes:
+     - ./src:/var/www/html
